@@ -12,14 +12,15 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		try {
-			await axios.post("http://localhost:5000/account/login", { email, password });
-			console.log("posted data");
-			// Redirect to another page after successful login
-			navigate("/dashboard");
-		} catch (error) {
-			console.error("Error logging in:", error);
-		}
+		axios({ method: "post", url: "http://rbserver.charlieschuyler.com/account/login", data: { email: email, password: password } })
+			.then((response) => {
+				console.log(response);
+				// navigate("/dashboard");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+		// Redirect to another page after successful login
 	};
 
 	return (
@@ -27,7 +28,7 @@ const Login = () => {
 			<div className="inputfields">
 				<div className="header">
 					<b>Welcome To RosterBuddy</b>
-					<p>Sign in to continue</p>
+					<p>Log in to continue</p>
 				</div>
 				<form id="login-form" onSubmit={handleSubmit}>
 					<div className="email">
