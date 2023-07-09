@@ -1,30 +1,48 @@
-import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 // components
+
+import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/accounts/Login";
 import Signup from "./components/accounts/Signup";
-import Header from "./components/Header";
 
+import checkAccess from "./script/checkAccess";
 // css
 import "./style/app.css";
 
 // react router
-const router = createBrowserRouter([
-	{
-		path: "/login",
-		element: <Login></Login>,
-	},
-	{
-		path: "/signup",
-		element: <Signup></Signup>,
-	},
-]);
 
 function App() {
+	const [ValidToken, setValidToken] = useState();
+
+	useEffect(() => {
+		const interval = setInterval(async () => {
+			const result = await checkAccess();
+			setValidToken(result.error);
+		}, 15000);
+
+		checkAccess().then(result => {
+			setValidToken(result.error);
+		});
+
+		return () => {
+			clearInterval(interval);
+		};
+	}, []);
+
+
 	return (
 		<div className="App">
 			{/* <Header></Header> */}
-
-			<RouterProvider router={router} />
+			<BrowserRouter>
+				<Routes>
+					<Route path="/dashboard" index element={<Dashboard ValidToken={ValidToken} />} />
+					<Route path="/login" element={<Login ValidToken={ValidToken} Navigate={Navigate} />} />
+					<Route path="/signup" index element={<Signup />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

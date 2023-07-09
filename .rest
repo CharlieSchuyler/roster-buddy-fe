@@ -1,0 +1,7 @@
+POST http://rbserver.charlieschuyler.com/account/login
+Content-Type: application/json
+
+{
+  "email": "charlie.schuyler@outlook.com"
+  "password": "D@cdqzR4qeNRrexA"
+}

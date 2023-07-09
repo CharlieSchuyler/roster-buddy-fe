@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
+import axios from "axios";
 
-const Dashboard = () => {
-	return <div>Dashboard</div>;
+// components
+import Header from "./Header";
+
+const Dashboard = (props) => {
+	const [userdata, setUserdata] = useState({});
+
+	return (
+		<div>
+			<Header></Header>
+			{!props.ValidToken && <Navigate to="/login" replace={true} />}
+		</div>
+	);
 };
 
 export default Dashboard;

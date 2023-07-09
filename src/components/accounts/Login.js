@@ -5,7 +5,7 @@ import "../../style/accounts/login.css";
 // modules
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
@@ -13,9 +13,12 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		axios({ method: "post", url: "http://rbserver.charlieschuyler.com/account/login", data: { email: email, password: password } })
-			.then((response) => {
-				console.log(response);
-				// navigate("/dashboard");
+			.then((res) => {
+				console.log(res);
+				localStorage.setItem("accessToken", res.data.accessToken);
+				localStorage.setItem("refreshToken", res.data.refreshToken);
+				window.location = "/dashboard";
+
 			})
 			.catch((err) => {
 				console.log(err);
@@ -25,6 +28,7 @@ const Login = () => {
 
 	return (
 		<div className="Login">
+			{props.ValidToken && <props.Navigate to="/dashboard" replace={true} />}
 			<div className="inputfields">
 				<div className="header">
 					<b>Welcome To RosterBuddy</b>
