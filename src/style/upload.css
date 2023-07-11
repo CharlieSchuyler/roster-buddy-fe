@@ -1,0 +1,31 @@
+.file-upload-container {
+  border: 2px dashed #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  cursor: pointer;
+}
+
+.selected-file {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.upload-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.icon {
+  font-size: 48px;
+}
+
+.file-input {
+  display: none;
+}/*# sourceMappingURL=upload.css.map */

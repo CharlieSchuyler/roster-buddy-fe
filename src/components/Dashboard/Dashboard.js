@@ -5,12 +5,14 @@ import axios from "axios";
 // components
 import Header from "./Header";
 
+import Settings from "./pages/Settings";
+
 const Dashboard = (props) => {
 	const [userdata, setUserdata] = useState({});
 
 	return (
 		<div>
-			<Header></Header>
+			<Settings></Settings>
 			{!props.ValidToken && <Navigate to="/login" replace={true} />}
 		</div>
 	);

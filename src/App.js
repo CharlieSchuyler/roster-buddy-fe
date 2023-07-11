@@ -11,6 +11,7 @@ import Signup from "./components/accounts/Signup";
 import checkAccess from "./script/checkAccess";
 // css
 import "./style/app.css";
+import "./style/upload.css"
 
 // react router
 
@@ -39,6 +40,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/dashboard" index element={<Dashboard ValidToken={ValidToken} />} />
+					<Route path="/" index element={<Login ValidToken={ValidToken} Navigate={Navigate} />} />
 					<Route path="/login" element={<Login ValidToken={ValidToken} Navigate={Navigate} />} />
 					<Route path="/signup" index element={<Signup />} />
 				</Routes>

@@ -19,6 +19,7 @@ const Signup = () => {
 		axios({ method: "post", url: "http://rbserver.charlieschuyler.com/account/signup", data: { email: email, password: password, fname: fname, lname: lname } })
 			.then((response) => {
 				console.log(response);
+				navigate("/dashboard")
 				// navigate("/dashboard");
 			})
 			.catch((err) => {
