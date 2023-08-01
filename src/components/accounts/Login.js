@@ -15,7 +15,7 @@ const Login = (props) => {
 		axios({ method: "post", url: "http://rbserver.charlieschuyler.com/account/login", data: { email: email, password: password } })
 			.then((res) => {
 				console.log(res);
-				localStorage.setItem("accessToken", res.data.accessToken);
+				localStorage.setItem("accessToken", ingres.data.accessToken);
 				localStorage.setItem("refreshToken", res.data.refreshToken);
 				window.location = "/dashboard";
 
@@ -43,13 +43,13 @@ const Login = (props) => {
 						<h2>Password</h2>
 						<input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
 					</div>
-					<input type="submit" value="Submit" />
-					<h2 className="existingAccount">
-						<Link to="/signup">Don't have an account?</Link>
+					<input type="submit" value="Submit" onClick={props.toggleAuth} />
+					<h2 className="existingAccount" onClick={props.toggleSignup}>
+						Don't have an account?
 					</h2>
 				</form>
 			</div>
-			<div className="background"></div>
+
 		</div>
 	);
 };

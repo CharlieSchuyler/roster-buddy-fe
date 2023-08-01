@@ -6,7 +6,7 @@
 .Login .inputfields,
 .Signup .inputfields {
   height: 100vh;
-  width: 40%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,11 +74,4 @@
   background-color: #22333b;
   font-size: medium;
   cursor: pointer;
-}
-.Login .background,
-.Signup .background {
-  width: 60%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("../../../public/aircraft.jpg");
 }/*# sourceMappingURL=login.css.map */

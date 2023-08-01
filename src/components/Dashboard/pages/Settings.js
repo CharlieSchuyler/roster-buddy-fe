@@ -1,5 +1,5 @@
 import React from "react";
-import RosterUpload from "./RosterUpload";
+// import RosterUpload from "./RosterUpload";
 import axios from "axios";
 
 const Settings = () => {
@@ -8,7 +8,7 @@ const Settings = () => {
 
 	return (
 		<div>
-			<RosterUpload />
+
 		</div>
 	);
 };

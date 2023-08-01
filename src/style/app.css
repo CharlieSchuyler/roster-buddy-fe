@@ -7,4 +7,19 @@ body {
 * {
   color: #e4e4e4;
   font-family: "Inter", sans-serif;
+}
+
+.header2 {
+  height: 4%;
+  padding-left: 10%;
+}
+
+.contentSpace {
+  width: 80%;
+  left: 10%;
+  height: 80vh;
+  position: absolute;
+  bottom: 0%;
+  display: flex;
+  flex-direction: row;
 }/*# sourceMappingURL=app.css.map */

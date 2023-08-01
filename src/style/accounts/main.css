@@ -1,0 +1,15 @@
+.ap {
+  display: flex;
+  justify-content: center;
+}
+.ap .fields {
+  width: 40%;
+  height: 100vh;
+}
+
+.background {
+  width: 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../../public/aircraft.jpg");
+} /*# sourceMappingURL=main.css.map */

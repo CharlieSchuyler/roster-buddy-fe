@@ -7,7 +7,7 @@ import "../../style/accounts/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Signup = () => {
+const Signup = (props) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [fname, setFname] = useState("");
@@ -56,12 +56,11 @@ const Signup = () => {
 						<input required type="password" name="Password" id="password" onChange={(e) => setPassword(e.target.value)} />
 					</label>
 					<input type="submit" value="Submit" />
-					<h2 className="existingAccount">
-						<Link to="/login">Already have an account?</Link>
+					<h2 className="existingAccount" onClick={props.toggleSignup}>
+						Already have an account?
 					</h2>
 				</form>
 			</div>
-			<div className="background"></div>
 		</div>
 	);
 };

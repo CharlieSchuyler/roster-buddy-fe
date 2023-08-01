@@ -1,0 +1,44 @@
+.upcoming {
+	width: 30%;
+
+	.seperator {
+		margin-left: 10%;
+		margin-bottom: 5%;
+		margin-top: 5%;
+		width: 80%;
+		height: 2px;
+		border-radius: 5px;
+		background-color: white;
+	}
+	div {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+
+		.departure {
+			align-items: flex-start !important;
+		}
+		.arrival {
+			align-items: flex-end !important;
+		}
+		.departure,
+		.arrival {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			.airport {
+				font-size: 29px;
+			}
+			.date {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				.date {
+					font-size: 22px !important;
+				}
+				font-size: 20px;
+			}
+		}
+	}
+}
