@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../style/accounts/main.css";
 
 import Signup from "./Signup";
 import Login from "./Login";
 import RosterUpload from "./RosterUpload";
+import { useNavigate } from "react-router-dom";
 
-const AccountProcess = () => {
-	const [activeComponent, setActiveComponent] = useState({ signup: true, authorized: true });
+import checkAccess from "../../script/checkAccess";
+
+const AccountProcess = (props) => {
+	const navigate = useNavigate();
+	const [activeComponent, setActiveComponent] = useState({ signup: true, authorized: false });
+	useEffect(() => {
+		const interval = setInterval(async () => {
+			if (checkAccess()) {
+				navigate("/dashboard")
+			}
+		}, 1000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	}, [])
 
 
 	// checks react state to check the state of signup and authorized to redirect the user to the correct component

@@ -15,9 +15,13 @@ const Login = (props) => {
 		axios({ method: "post", url: "http://rbserver.charlieschuyler.com/account/login", data: { email: email, password: password } })
 			.then((res) => {
 				console.log(res);
-				localStorage.setItem("accessToken", ingres.data.accessToken);
-				localStorage.setItem("refreshToken", res.data.refreshToken);
-				window.location = "/dashboard";
+				if (res.data.error) {
+					window.alert(res.data.error)
+				}
+				else {
+					localStorage.setItem("accessToken", res.data.accessToken);
+					props.toggleAuth()
+				}
 
 			})
 			.catch((err) => {
@@ -43,7 +47,7 @@ const Login = (props) => {
 						<h2>Password</h2>
 						<input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
 					</div>
-					<input type="submit" value="Submit" onClick={props.toggleAuth} />
+					<input type="submit" value="Submit" />
 					<h2 className="existingAccount" onClick={props.toggleSignup}>
 						Don't have an account?
 					</h2>

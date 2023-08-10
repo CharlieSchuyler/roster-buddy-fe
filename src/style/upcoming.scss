@@ -10,35 +10,18 @@
 		border-radius: 5px;
 		background-color: white;
 	}
-	div {
-		display: flex;
-		justify-content: space-between;
-		flex-direction: row;
+	.flight-details {
+		background-color: rgb(56, 56, 56);
+		border-radius: 20px;
+		padding: 10px;
+		margin: 10px;
 
-		.departure {
-			align-items: flex-start !important;
-		}
-		.arrival {
-			align-items: flex-end !important;
-		}
-		.departure,
-		.arrival {
+		div {
+			padding: 5px;
 			display: flex;
-			justify-content: center;
+			justify-content: space-around;
+			display: flex;
 			flex-direction: column;
-			.airport {
-				font-size: 29px;
-			}
-			.date {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-				.date {
-					font-size: 22px !important;
-				}
-				font-size: 20px;
-			}
 		}
 	}
 }

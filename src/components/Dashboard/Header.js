@@ -4,6 +4,9 @@ import React from "react";
 import "../../style/header.css";
 
 const Header = () => {
+	function logout() {
+		localStorage.removeItem("accessToken")
+	}
 	return (
 		<div className="header-main">
 			<div className="branding">
@@ -12,17 +15,11 @@ const Header = () => {
 			</div>
 			<div className="navigation">
 				<ul>
-					<a href="./">
+					<a href="./dashboard">
 						<li className="active">Dashboard</li>
 					</a>
-					<a href="./Calander">
-						<li>Calander</li>
-					</a>
-					<a href="./Groups">
-						<li>Groups</li>
-					</a>
-					<a href="./Settings">
-						<li>Settings</li>
+					<a href="./">
+						<li onClick={logout()}>Logout</li>
 					</a>
 				</ul>
 			</div>

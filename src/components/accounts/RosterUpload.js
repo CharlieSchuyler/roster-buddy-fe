@@ -1,9 +1,10 @@
 import react, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RosterUpload = (props) => {
 	const [selectedFile, setSelectedFile] = useState(null);
-
+	const navigate = useNavigate();
 	const handleFileChange = (event) => {
 		setSelectedFile(event.target.files[0]);
 	};
@@ -22,22 +23,33 @@ const RosterUpload = (props) => {
 		// Create a FormData object to hold the form data
 		const formData = new FormData();
 		formData.append("file", selectedFile);
+		formData.append("accessToken", localStorage.getItem("accessToken"));
 
-		try {
-			// Send the form data using Axios
-			const response = await axios.post("http://rbserver.charlieschuyler.com/upload", formData, {
-				headers: {
-					"Content-Type": "multipart/form-data",
-				},
-			});
-
-			// Handle the response
-			console.log("Response:", response);
-			// Do something with the response data if needed
-		} catch (error) {
-			// Handle any errors that occur during the request
-			console.error("Error:", error);
-			// Display an error message or take appropriate action
+		if (selectedFile) {
+			try {
+				// Send the form data using Axios
+				await axios
+					.post("http://rbserver.charlieschuyler.com/upload", formData, {
+						headers: {
+							"Content-Type": "multipart/form-data",
+						},
+					})
+					.then((res) => {
+						console.log(res);
+						if (res.status !== 200) {
+							window.alert("error");
+						} else {
+							navigate("/dashboard");
+						}
+					});
+			} catch (error) {
+				// Handle any errors that occur during the request
+				console.error("Error:", error);
+				// Display an error message or take appropriate action
+			}
+		} else {
+			window.alert("please submite a file");
+			return;
 		}
 	};
 

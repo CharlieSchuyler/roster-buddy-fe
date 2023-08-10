@@ -10,36 +10,16 @@
   border-radius: 5px;
   background-color: white;
 }
-.upcoming div {
+.upcoming .flight-details {
+  background-color: rgb(56, 56, 56);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 10px;
+}
+.upcoming .flight-details div {
+  padding: 5px;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
-.upcoming div .departure {
-  align-items: flex-start !important;
-}
-.upcoming div .arrival {
-  align-items: flex-end !important;
-}
-.upcoming div .departure,
-.upcoming div .arrival {
+  justify-content: space-around;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-}
-.upcoming div .departure .airport,
-.upcoming div .arrival .airport {
-  font-size: 29px;
-}
-.upcoming div .departure .date,
-.upcoming div .arrival .date {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 20px;
-}
-.upcoming div .departure .date .date,
-.upcoming div .arrival .date .date {
-  font-size: 22px !important;
 }/*# sourceMappingURL=upcoming.css.map */

@@ -19,7 +19,12 @@ const Signup = (props) => {
 		axios({ method: "post", url: "http://rbserver.charlieschuyler.com/account/signup", data: { email: email, password: password, fname: fname, lname: lname } })
 			.then((response) => {
 				console.log(response);
-				navigate("/dashboard")
+				if (response.data === 'Added to database') {
+					props.toggleSignup()
+				}
+				else {
+					window.alert(response.data)
+				}
 				// navigate("/dashboard");
 			})
 			.catch((err) => {

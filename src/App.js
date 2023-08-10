@@ -19,20 +19,20 @@ import "./style/upload.css"
 function App() {
 	const [ValidToken, setValidToken] = useState();
 
-	// useEffect(() => {
-	// 	const interval = setInterval(async () => {
-	// 		const result = await checkAccess();
-	// 		setValidToken(result.error);
-	// 	}, 15000);
+	useEffect(() => {
+		const interval = setInterval(async () => {
+			const result = await checkAccess();
+			setValidToken(result.error);
+		}, 15000);
 
-	// 	checkAccess().then(result => {
-	// 		setValidToken(result.error);
-	// 	});
+		checkAccess().then(result => {
+			setValidToken(result.error);
+		});
 
-	// 	return () => {
-	// 		clearInterval(interval);
-	// 	};
-	// }, []);
+		return () => {
+			clearInterval(interval);
+		};
+	}, []);
 
 
 	return (
@@ -41,7 +41,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/dashboard" index element={<Dashboard ValidToken={ValidToken} />} />
-					<Route path="/" index element={<AccountProcess />} />
+					<Route path="/" index element={<AccountProcess ValidToken={ValidToken} />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
